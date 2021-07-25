@@ -1,0 +1,93 @@
+//grid
+// For parent elements
+//grid
+@mixin gridstart {
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, calc(1468px + 2em)) 1fr;
+  }
+
+  @mixin gridchild {
+    grid-column: 2;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+
+  @mixin gridSettingsIE($columns-columnsIE, $rows-rowsIE) {
+    display: -ms-grid;
+    -ms-grid-columns: $columns-columnsIE;
+    -ms-grid-rows: $rows-rowsIE;
+  }
+
+  // ADD A CSS GRID FOR MODERN BROWSERS ONLY
+
+  @mixin gridSettingsMB($columns-columns, $rows-rows, $cGap-columnGap, $rGap-rowGap) {
+    display: grid; 
+    grid-template-columns: $columns-columns;
+    grid-template-rows: $rows-rows;
+    grid-column-gap: $cGap-columnGap;
+    grid-row-gap: $rGap-rowGap;
+  }
+
+  // ADD A CSS GRID AREA
+
+  @mixin gridSettingsArea($area-gridArea, $cGap-columnGap, $rGap-rowGap) {
+    display: grid;
+    grid-area: $area-gridArea;
+    grid-column-gap: $cGap-columnGap;
+    grid-row-gap: $rGap-rowGap;
+  }
+
+  // ADD AN ALL PURPOSE GRID FOR MODERN BROWSERS AND IE
+
+  @mixin gridSettingsAll($columns-columnsIE, $columns-columns, $rows-rowsIE, $rows-rows, $cGap-columnGap, $rGap-rowGap) {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: $columns-columnsIE;
+    grid-template-columns: $columns-columns;
+    -ms-grid-rows: $rows-rowsIE;
+    grid-template-rows: $rows-rows;
+    grid-column-gap: $cGap-columnGap;
+    grid-row-gap: $rGap-rowGap;
+  }
+
+  // SET THE ORDER OF GRID CHILDREN
+
+  @mixin gridChildOrder($order-gridChildOrder) {
+    order: $order-gridChildOrder;
+  }
+
+  // GRID SITE WRAPPERS
+  
+  $siteWrapper: 1fr minmax(calc(320px - 4rem), calc(1468px + 4rem)) 1fr;
+  $bodyWrapper: 1fr minmax(calc(320px - 4rem), calc(1200px + 4rem)) 1fr;
+  $minmaxfr: minmax(0, 1fr);
+  $minmaxMC: minmax(0, max-content);
+
+  // SET AN EXPLICIT POSITION FOR A GRID CHILD ELEMENT WITHIN THE GRID (IE AND MODERN BROWSERS)
+  
+  @mixin gridPosition($gridColumn-gColumnIe, $gridColumn-gColumn, $gridRow-gRowIe, $gridRow-gRow) {
+  
+    -ms-grid-column: $gridColumn-gColumnIe;
+    grid-column: $gridColumn-gColumn;
+    -ms-grid-row: $gridRow-gRowIe;
+    grid-row: $gridRow-gRow;
+  
+  }
+
+  // SET AN EXPLICIT POSITION FOR A GRID CHILD ELEMENT WITHIN THE GRID (IE ONLY)
+  
+  @mixin gridPositionIE($gridColumn-gColumnIe, $gridRow-gRowIe) {
+  
+    -ms-grid-column: $gridColumn-gColumnIe;
+    -ms-grid-row: $gridRow-gRowIe;
+
+  }
+
+  // SET AN EXPLICIT POSITION FOR A GRID CHILD ELEMENT WITHIN THE GRID (MODERN BROWSERS ONLY)
+  
+  @mixin gridPositionMB($gridColumn-gColumn, $gridRow-gRow) {
+  
+    grid-column: $gridColumn-gColumn;
+    grid-row: $gridRow-gRow;
+  
+  }

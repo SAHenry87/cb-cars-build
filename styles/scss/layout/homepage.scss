@@ -1,0 +1,272 @@
+#home-hero {
+    @include gridSettingsAll ($minmaxfr, $minmaxfr, $minmaxfr, $minmaxfr, 0, 0);
+
+    .slider-wrapper {
+        @include gridPosition(1, 1, 1, 1);
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: calc(100vh - 112px);
+        margin-top: 112px;
+        max-width: 100vw;
+
+        @include tablet {
+            height: calc(100vh - 72px);
+            margin-top: 72px;            
+        }
+
+        picture {
+            display: block;
+            width: 100%;
+            height: calc(100vh - 112px);
+
+            @include tablet {
+                height: calc(100vh - 72px); 
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .color-overlay {
+        @include gridPosition(1, 1, 1, 1);
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        animation:fade-out 1s ease-out 5.5s both;
+
+        @supports (mix-blend-mode: color) {            
+            mix-blend-mode: color;
+            background: black;
+        }
+
+        @supports not (mix-blend-mode: color) {            
+            opacity: 0;
+        }
+
+        @include old-ie {
+            opacity: 0;
+        }
+    }
+
+    .slide-away {
+        @include gridPosition(1, 1, 1, 1);
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        height: calc(100vh - 112px);
+        margin-top: 112px;
+        @include gridSettingsAll ($minmaxfr $minmaxfr, repeat(2, $minmaxfr), $minmaxfr $minmaxfr, repeat(2, $minmaxfr), 0, 0);
+
+        
+
+        @include tablet {
+            height: calc(100vh - 72px);
+            margin-top: 72px;            
+        }
+
+        .slide {
+            background: $secondary-color-2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:nth-of-type(1) {
+                @include gridPosition (1, 1, 1, 1);
+                animation:scale-out-hor-right .25s cubic-bezier(.55,.085,.68,.53) 4.5s both;
+
+                .text {
+                    animation:tracking-in-expand-fwd .8s cubic-bezier(.215,.61,.355,1.000) .75s both;
+                }
+            }
+
+            &:nth-of-type(2) {
+                @include gridPosition (2, 2, 1, 1);
+                animation:scale-out-ver-bottom .25s cubic-bezier(.55,.085,.68,.53) 4.75s both;
+
+                .text {
+                    animation:tracking-in-expand-fwd .8s cubic-bezier(.215,.61,.355,1.000) 1s both;
+                }
+            }
+
+            &:nth-of-type(3) {
+                @include gridPosition (1, 1, 2, 2);
+                animation:scale-out-ver-top .25s cubic-bezier(.55,.085,.68,.53) 5.25s both;
+
+                .text {
+                    animation:tracking-in-expand-fwd .8s cubic-bezier(.215,.61,.355,1.000) 1.25s both;
+                }
+            }
+
+            &:nth-of-type(4) {
+                @include gridPosition (2, 2, 2, 2);
+                animation:scale-out-hor-left .25s cubic-bezier(.55,.085,.68,.53) 5s both;
+
+                .text {
+                    animation:tracking-in-expand-fwd .8s cubic-bezier(.215,.61,.355,1.000) 1.5s both;
+                }
+            }
+
+            .text {
+                font-size: 3em;
+                font-family: $font-header;
+                font-weight: bold;
+                color: rgba($black, .5);
+
+                span {
+                    animation:fade-out .5s ease-out 3s both;
+                }
+            }
+        }
+
+    }
+
+    .center-text {
+        @include gridPosition(1, 1, 1, 1);
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        height: calc(100vh - 112px);
+        margin-top: 112px;
+        pointer-events: none;
+
+        @include tablet {
+            height: calc(100vh - 72px);
+            margin-top: 72px;            
+        }
+
+        .text-box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+
+            .heading {
+                pointer-events: all;
+                font-size: 2em;
+                font-family: $font-header;
+                font-weight: 300;
+                background: #949494;
+                border: 2px solid $secondary-color;
+                padding: .75em 1.5em;
+                animation:rotate-out-hor .5s cubic-bezier(.55,.085,.68,.53) 3.75s both;
+
+                span {
+                    color: $white;
+                    animation: color-change 1s ease-in-out 1.75s both;                    
+                }
+            }
+        }
+
+        .horizontal-line {
+            width: 100%;
+            height: 2px;
+            background: $secondary-color;
+            position: absolute;
+            top: calc(50% - 1px);
+            z-index: inherit;
+            animation:scale-out-horizontal .5s cubic-bezier(.55,.085,.68,.53) 3s both;
+        }
+
+        .vertical-line {
+            width: 2px;
+            height: 100%;
+            background: $secondary-color;
+            position: absolute;
+            left: calc(50% - 1px);
+            z-index: inherit;
+            animation:scale-out-vertical .5s cubic-bezier(.55,.085,.68,.53) 3s both;
+        }
+
+
+    }
+
+    .strapline {
+        @include gridPosition(1, 1, 1, 1);
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        height: calc(100vh - 112px);
+        margin-top: 112px;
+        pointer-events: none;
+        @include gridSettingsAll ($siteWrapper, $siteWrapper, $minmaxfr, $minmaxfr, 0, 0);
+
+        @include tablet {
+            height: calc(100vh - 72px);
+            margin-top: 72px;            
+        }
+
+        .strapline-wrapper {
+            @include gridPosition(2, 2, 1, 1);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 2rem;
+            box-sizing: border-box;
+
+            .strapline-center {
+                width: 100%;
+                max-width: 500px;
+                pointer-events: all;
+
+                h1 {
+                    background: rgba($black, .8);
+                    display: inline-block;
+                    padding: 1rem;
+                    box-sizing: border-box;
+                    font-family: $font-header;
+                    font-size: 2.5em;
+                    font-size: clamp(21px, 3vw, 2.5em);
+                    color: $primary-color;
+                    margin-bottom: 0.125em;
+                    animation:tracking-in-expand-fwd .8s cubic-bezier(.215,.61,.355,1.000) 6.75s both;
+                }
+
+                p {
+                    background: rgba($black, .8);
+                    display: inline-block;
+                    padding: 1rem;
+                    box-sizing: border-box;
+                    font-size: 1.2em;
+                    font-size: clamp(16px, 2vw, 1.2em);
+                    color: $white;
+                    line-height: 1.2;
+                    animation:fade-in .5s ease-out 7s both;
+                }
+
+                a {
+                    display: inline-block;
+                    font-size: 1.5em;
+                    font-family: $font-header;
+                    font-weight: 300;
+                    background: #949494;
+                    border: 2px solid $secondary-color;
+                    padding: .5em 1em;
+                    margin-top: .5em;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: $white;
+                    transition: $transition-half;
+                    animation:rotate-in-hor .5s cubic-bezier(.25,.46,.45,.94) 7.25s both;
+
+                    &:hover, &:focus, &:focus-visible {
+                        background: $secondary-color;
+                        color: $primary-color;
+                    }
+                }
+            }
+
+        }
+
+    }
+}
